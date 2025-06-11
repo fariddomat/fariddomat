@@ -87,13 +87,6 @@
         .btn-glow:hover {
             box-shadow: 0 0 15px rgba(96, 165, 250, 0.5);
         }
-        .navbar {
-            @apply shadow-md backdrop-blur bg-opacity-90 rounded-b-lg;
-            background-color: rgba(31, 41, 55, 0.85);
-        }
-        [data-theme="light"] .navbar {
-            background: linear-gradient(to bottom, rgba(47, 184, 255, 0.9), rgba(47, 184, 255, 0.8));
-        }
         footer {
             background-color: #15191e;
             @apply material-card;
@@ -194,6 +187,105 @@
                 opacity: 0;
             }
         }
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background: rgba(31, 41, 55, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: left 0.5s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            padding-top: 2rem;
+        }
+        [data-theme="light"] .sidebar {
+            background: rgba(243, 244, 246, 0.95);
+        }
+        .sidebar.open {
+            left: 0;
+        }
+        .sidebar-toggle {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 1001;
+            background: #60A5FA;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .sidebar-toggle:hover {
+            transform: scale(1.1);
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar li {
+            margin: 0.5rem 0;
+        }
+        .sidebar a, .sidebar button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            color: #D1D5DB;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        [data-theme="light"] .sidebar a, [data-theme="light"] .sidebar button {
+            color: #1F2937;
+        }
+        .sidebar a:hover, .sidebar button:hover {
+            background: #60A5FA;
+            color: white;
+            border-radius: 0.5rem;
+        }
+        .sidebar .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            color: #60A5FA;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        /* Bubble Transition Effect */
+        .bubble-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 999;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .bubble-transition .transition-bubble {
+            position: absolute;
+            background: rgba(96, 165, 250, 0.5);
+            border-radius: 50%;
+            animation: bubbleExpand 0.6s ease-out forwards;
+        }
+        @keyframes bubbleExpand {
+            0% {
+                transform: scale(0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(10);
+                opacity: 0;
+            }
+        }
         /* Flipped Card Styles */
         .flip-card {
             perspective: 1000px;
@@ -271,8 +363,8 @@
             min-width: 250px;
         }
         .timeline-item.visible {
-            opacity: 1;
-            transform: translateY(0);
+            opacity: 1 !important;
+            transform: translateY(0) !important;
         }
         .timeline-item::before {
             content: '';
@@ -514,39 +606,28 @@
         </div>
     </div>
 
-    <!-- Navigation -->
-    <div class="navbar fixed top-0 left-0 w-full bg-base-300 z-50">
-        <div class="navbar-start">
-            <a href="#header" class="btn btn-ghost text-xl text-primary">Farid Domat <i class="fas fa-code title-icon"></i></a>
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="logo">
+            <i class="fas fa-code"></i> Farid Domat
         </div>
-        <div class="navbar-end">
-            <!-- Mobile Menu -->
-            <div class="dropdown md:hidden">
-                <label tabindex="0" class="btn btn-ghost">
-                    <i class="fas fa-bars text-2xl"></i>
-                </label>
-                <ul tabindex="0" class="menu dropdown-content mt-3 p-2 shadow bg-base-200 rounded-box w-52">
-                    <li><a href="#summary" class="hover:text-primary">Summary</a></li>
-                    <li><a href="#skills" class="hover:text-primary">Skills</a></li>
-                    <li><a href="#experience" class="hover:text-primary">Experience</a></li>
-                    <li><a href="#projects" class="hover:text-primary">Projects</a></li>
-                    <li><a href="#contact" class="hover:text-primary">Contact</a></li>
-                    <li><button id="mode-toggle-mobile" class="hover:text-primary"><i class="fas fa-moon"></i></button></li>
-                </ul>
-            </div>
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex">
-                <ul class="menu menu-horizontal px-1">
-                    <li><a href="#summary" class="hover:text-primary">Summary</a></li>
-                    <li><a href="#skills" class="hover:text-primary">Skills</a></li>
-                    <li><a href="#experience" class="hover:text-primary">Experience</a></li>
-                    <li><a href="#projects" class="hover:text-primary">Projects</a></li>
-                    <li><a href="#contact" class="hover:text-primary">Contact</a></li>
-                    <li><button id="mode-toggle" class="hover:text-primary"><i class="fas fa-moon"></i></button></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+        <ul>
+            <li><a href="#summary"><i class="fas fa-user"></i> Summary</a></li>
+            <li><a href="#skills"><i class="fas fa-tools"></i> Skills</a></li>
+            <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
+            <li><a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><button id="mode-toggle"><i class="fas fa-moon"></i> Theme</button></li>
+        </ul>
+    </nav>
+
+    <!-- Sidebar Toggle Button -->
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Bubble Transition Container -->
+    <div class="bubble-transition" id="bubble-transition"></div>
 
     <!-- Header Section -->
     <header id="header" class="min-h-screen flex items-center justify-center parallax">
@@ -804,7 +885,7 @@
     </section>
 
     <!-- Footer -->
-   <svg class="bg-base-200" width="100%" height="100%" id="svg" viewBox="0 0 1440 390" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150">
+    <svg class="bg-base-200" width="100%" height="100%" id="svg" viewBox="0 0 1440 390" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150">
         <style>
             .path-0 {
                 animation: pathAnim-0 4s;
@@ -876,6 +957,37 @@
             retina_detect: true
         });
 
+        // Sidebar Toggle with Bubble Transition
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const bubbleTransition = document.getElementById('bubble-transition');
+
+        function createTransitionBubble(x, y) {
+            const bubble = document.createElement('div');
+            bubble.classList.add('transition-bubble');
+            bubble.style.left = `${x}px`;
+            bubble.style.top = `${y}px`;
+            bubbleTransition.appendChild(bubble);
+            setTimeout(() => bubble.remove(), 600);
+        }
+
+        sidebarToggle.addEventListener('click', (e) => {
+            const rect = sidebarToggle.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+            createTransitionBubble(x, y);
+            sidebar.classList.toggle('open');
+            sidebarToggle.innerHTML = sidebar.classList.contains('open') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close Sidebar on Link Click
+        document.querySelectorAll('.sidebar a').forEach(link => {
+            link.addEventListener('click', () => {
+                sidebar.classList.remove('open');
+                sidebarToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
         // Bubble Effect for Even Sections
         function createBubbles(container) {
             for (let i = 0; i < 10; i++) {
@@ -920,7 +1032,6 @@
             gsap.from(section.querySelectorAll('.card, .flip-card, .timeline-item, .contact-info, .contact-form'), {
                 opacity: 0,
                 y: 50,
-                rotation: 2,
                 duration: 1,
                 stagger: 0.2,
                 scrollTrigger: {
@@ -993,21 +1104,17 @@
 
         // Dark Mode Toggle
         const modeToggle = document.getElementById('mode-toggle');
-        const modeToggleMobile = document.getElementById('mode-toggle-mobile');
         const html = document.documentElement;
         function toggleTheme() {
             if (html.getAttribute('data-theme') === 'dark') {
                 html.setAttribute('data-theme', 'light');
-                modeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-                modeToggleMobile.innerHTML = '<i class="fas fa-moon"></i>';
+                modeToggle.innerHTML = '<i class="fas fa-moon"></i> Theme';
             } else {
                 html.setAttribute('data-theme', 'dark');
-                modeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-                modeToggleMobile.innerHTML = '<i class="fas fa-sun"></i>';
+                modeToggle.innerHTML = '<i class="fas fa-sun"></i> Theme';
             }
         }
         modeToggle.addEventListener('click', toggleTheme);
-        modeToggleMobile.addEventListener('click', toggleTheme);
 
         // Flip Card Click Toggle for Mobile
         document.querySelectorAll('.flip-card').forEach(card => {
