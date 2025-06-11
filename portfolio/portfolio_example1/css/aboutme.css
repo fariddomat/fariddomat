@@ -1,0 +1,51 @@
+
+
+/* Start about me */
+
+.about-me{
+    background-color: #1a1a29;
+    overflow: hidden;
+    color: white;
+    
+    font-family: 'Cairo', sans-serif;
+}
+
+.about-me .image{
+    float: left;
+    width: 40%;
+}
+
+.about-me .image img{
+    width: 100%;
+    padding-right: 50px;  
+}
+
+.about-me .info{
+    float: left;
+    width: 60%;
+    padding-left: 50px;
+    padding-top: 100px;
+
+}
+
+.about-me .info .hobbies{
+    overflow: hidden;
+    margin: 20px;
+}
+
+.about-me .info .hobbies >div{
+    float: left;
+    width: 50%;
+    min-height: 100px;
+}
+
+.about-me .info .hobbies span{
+    color: forestgreen;
+}
+.about-me .info .hobbies p{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+/* End about me*/

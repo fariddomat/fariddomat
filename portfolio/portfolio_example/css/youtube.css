@@ -1,0 +1,26 @@
+#youtube{
+    text-align: center;
+    padding: 50px;
+    
+}
+#youtube h1{
+    padding-bottom: 50px;
+    color: #003366;
+}
+
+.videoframe{
+    position: relative;
+    padding-bottom: 56.25%;/* 16:9 */
+    padding-top: 25px;
+    height: 0;
+    
+}
+
+.videoframe iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; !important;
+    height: 100%; !important;
+}
+

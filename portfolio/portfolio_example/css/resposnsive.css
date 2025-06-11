@@ -1,0 +1,57 @@
+@media (max-width: 620px){
+    /* navigation bar */
+    #menu{
+        height: 100px;
+        padding: 0;
+        text-align: center;
+    }
+    #logo{
+        float: none;
+        line-height: 50px;
+        border-bottom: 1px solid #ff6666;
+        
+        width: 75%;
+        margin: 0 auto;
+    }
+    .menu-all{
+        width: 100%;
+    }
+    .menu-item{
+        float: left;
+        padding: 5px;
+        width: 25%;
+    }
+
+    /* About */
+    
+    #about {
+        width: 90%;
+    }
+   
+    /* portofolio*/
+    .col-3{
+        width: 100%;
+        margin-bottom: 3%;
+        transition-duration: 1s;
+    }
+    .col-left{
+        margin-left: 0;
+    }
+ 
+    /* Contact */
+    .col-2{
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    
+    #contact{
+        height: 1150px;
+    }
+    
+}
+
+@media (max-width: 480px){
+    #about {
+        height: 500px;
+    }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>simple responsive website</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container">
+        <div class="full-width">
+            <img src="oma2.png" style="width: 200px">
+        </div>
+        <nav>
+            <div class="toggle">
+
+                <i class="fas fa-bars menu" aria-hidden="true"></i>
+            </div>
+            <ul class="ulM">
+            <li> <a href="#" class="active">Home</a> </li>
+            <li> <a href="#">About</a> </li>
+            <li> <a href="#">Services</a> </li>
+            <li> <a href="#">Portfolio</a> </li>
+            <li> <a href="#">Contact</a> </li>
+            </ul>
+        </nav>
+        <div class="full-width margin-top20px">
+            <div class="col-7">
+                <div class="post">
+                    <h2> Short Story</h2>
+                    <img src="short-story.jpg">
+                    <h3>Last December,</h3><p> a short story by Kristen Roupenian called 'Cat Person' went viral. <br>It was a reminder of the power the form can wield, and a great advert for literature in an era dominated by other mediums.
+                </p><p>
+                    Short stories, <br>of course, have the added advantage of being short, meaning you can digest them in small chunks - the perfectly alternative to staring at your iPhone for an hour before bed.
+                </p><p>
+                    Here we round up 15 classic and modern short story collections that should be on everyone's radar. <br></br>It's not a definitive list, of course, but it's a great start for anyone who wants to read more fiction in 2018.
+                </p>
+                </div>
+
+                <div class="post margin-top20px">
+                    <h3>Last December,</h3><p> a short story by Kristen Roupenian called 'Cat Person' went viral. <br>It was a reminder of the power the form can wield, and a great advert for literature in an era dominated by other mediums.
+                </p><p>
+                    Short stories, <br>of course, have the added advantage of being short, meaning you can digest them in small chunks - the perfectly alternative to staring at your iPhone for an hour before bed.
+                </p><p>
+                    Here we round up 15 classic and modern short story collections that should be on everyone's radar. <br></br>It's not a definitive list, of course, but it's a great start for anyone who wants to read more fiction in 2018.
+                </p>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <h2>Sidebar</h2>
+                <ul>
+                    <li>At vero eos et</li>
+                    <li>accusamus et iusto</li>
+                    <li>odio dignissimos</li>
+                    <li>ducimus qui blanditiis</li>
+                    <li>praesentium voluptatum</li>
+                    <li>At vero eos et</li>
+                    <li>accusamus et iusto</li>
+                    <li>odio dignissimos</li>
+                    <li>ducimus qui blanditiis</li>
+                    <li>praesentium voluptatum</li>
+
+
+                </ul>
+            </div>
+
+            <div style="clear:both "></div>
+        </div>
+        <div class="full-width">
+            <p class="footer-text">2018 test, by fariddomat</p>
+        </div>
+    </div>
+    <script src="../jQuery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.menu').click(function () {
+                $('ul').toggleClass('activeMenu');
+            })
+        })
+    </script>
+</body>
+</html>

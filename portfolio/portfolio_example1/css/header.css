@@ -1,0 +1,88 @@
+
+/* Star header */
+
+.icon{
+    padding: 10px 20px;
+    float: right;
+    text-align: right;
+    color: #fff;
+    font-size: 30px;
+    display: none;
+}
+
+
+
+.header{
+    
+    font-family: 'Cairo', sans-serif;
+}
+.header .slider{
+    background-color: #fff;
+    height: 520px;
+    width: 100%;
+    background: url(../img/slider.gif) no-repeat center -60px;
+    /* full width */
+    background-size: cover;
+}
+
+.header .slider .container{
+    text-align: center;
+    margin: auto;
+    padding-top:260px;
+}
+.header .slider h2{
+    text-align: center;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+    color: white;
+    font-family: 'Cairo', sans-serif;
+        line-height: 50px;
+    width:420px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.header .slider button{
+    padding: 5px;
+    margin-top: 25px;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    color:white; 
+    font-size: 20px;
+    
+}
+
+.header .navbar{
+    background-color: #1a1a29;
+    color: #fff; 
+    overflow: hidden;
+    text-transform: uppercase;
+}
+
+.header .navbar h2{
+    float: left;
+    text-transform: uppercase;
+}
+
+.header .navbar h2 span{
+color:#2ecc71;
+}
+
+.header .navbar ul{
+    float: right;
+
+}
+
+.header .navbar ul li{
+    list-style-type: none;
+    float: left;
+    padding: 10px;
+
+}
+
+
+
+/* End header*/

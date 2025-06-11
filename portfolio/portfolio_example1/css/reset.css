@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Cairo');
+
+/* Start Main Rules  */
+body{
+    background-color: #fff;
+    
+    box-sizing: border-box;
+    
+    font-family: 'Cairo', sans-serif;
+    
+    /* anti alias css */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container{
+    width: 100%;
+    margin: auto;
+    padding: 0 100px;
+}
+
+button{
+    padding: 5px;
+    margin-top: 25px;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    color:white; 
+    font-size: 20px;
+}
+
+.CTA{
+    padding: 5px;
+    margin-top: 25px;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    color:#2ecc71; 
+    width: 175px;
+    border-radius: 15px;
+    font-size: 20px;
+}
+/* End Main Rules */

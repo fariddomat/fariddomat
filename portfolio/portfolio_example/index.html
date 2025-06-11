@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    <!-- Basics HTML5 -->
+        <meta charset="utf-8">
+        <meta name="author" content="Farid Domat">
+        <meta name="description" content="Learn web design">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width-device-width, initial-scale=1">
+        <link rel="shortcut icon" href="imgs/favicon.ico">
+        
+        
+    <!-- my code -->
+        <title>
+            Full Demo
+        </title>
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        
+        
+    </head>
+    <body>
+<!-- website body -->
+        <div id="container">
+<!-- Main Menu -->
+            <nav id="menu">
+                <h1 id="logo">Farid Domat</h1>
+                <ul class="menu-all">
+                    <li class="menu-item"><a href="#">Home</a></li>
+                    <li class="menu-item"><a href="#">About</a></li>
+                    <li class="menu-item"><a href="#">Portofolio</a></li>
+                    <li class="menu-item"><a href="#">Contact</a></li>   
+                </ul>
+            </nav> 
+            
+<!-- Hero image -->
+            <div id="hero">
+                
+            </div>
+            
+<!-- About -->
+            <section id="about">
+                <h1>What is this ?</h1>
+                <div>
+                    <p class="about-p">
+                     lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).
+                        <br>
+                        Demo
+                    </p>
+                </div>
+                <button class="C2A">Press here</button>
+            </section>
+            
+<!-- Portofolio -->            
+            <section id="portofolio">
+                <h1>Web Design Demo</h1>
+                <div class="row">
+                    <div class="col-3 col-left">
+                        <header class="por-header">Level 1</header>
+                        <img src="imgs/level1.gif" alt="level1">
+                        <footer class="por-footer">
+                            <p>
+                                lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).
+                            </p>
+                        </footer>
+                    </div>
+                    
+                    <div class="col-3">
+                        <header class="por-header">Level 2</header>
+                        <img src="imgs/level2.gif" alt="level2">
+                        <footer class="por-footer">
+                            <p>
+                                lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).
+                            </p>
+                        </footer>
+                    </div>
+                    
+                    <div class="col-3">
+                        <header class="por-header">Level 3</header>
+                        <img src="imgs/level3.gif" alt="level3">
+                        <footer class="por-footer">
+                            <p>
+                                lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).
+                            </p>
+                        </footer>
+                    </div>
+                    
+                </div>
+                <button class="CTA">Press here</button>
+            </section>
+       
+<!-- Youtube --> 
+            <section id="youtube">
+                <h1>Over here we start</h1>
+                <div class="row">
+                    <div class="videoframe">
+                        <iframe class="video" src="https://www.youtube.com/embed/NmUkNUe5cBg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </section>
+            
+<!-- Conatct us --> 
+            <section id="contact">
+                <h1>Contact us</h1>
+                <div class="row">
+                    <div class="col-2">
+                        <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:395px;width:100%;'><div id='gmap_canvas' style='height:395px;width:450px;'></div><div><small><a href="https://embedgooglemaps.com/fr/">https://embedgooglemaps.com/fr/</a></small></div><div><small><a href="https://mrdiscountcode.hk/">https://mrdiscountcode.hk/</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:12,center:new google.maps.LatLng(34.7324273,36.71369589999995),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(34.7324273,36.71369589999995)});infowindow = new google.maps.InfoWindow({content:'<strong>Demo</strong><br>homs , Syria<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+                    </div>
+                    <div class="col-2">
+                        <form action="#" method="post">
+                            <input id="name" class="input" name="name" type="text" value="Name" size="30"><br>
+                            <input id="email" class="input" name="email" type="email" value="Email" size="30"><br>
+                            <input id="website" class="input" name="website" type="text" value="website" size="30"><br>
+                            <textarea id="msg" name="msg" rows="8" cols="30"></textarea><br>
+                            <input id="submit" class="CTA" type="submit" value="send" >
+                        </form>
+                       
+                    </div>
+                    
+                </div>
+            </section>
+            
+<!-- Footer -->
+            <section id="wsfooter">
+                <p>Designed by fariddomat 2018<br>
+                   <a href="mailto:fariddomat.000@gmail.com">Email:fariddomat.000@gmail.com </a>   | +963934583775
+                </p>            
+            </section>
+           
+        </div>
+          
+<!-- SCRIPTS -->
+        <script src="js/jQuery.js"></script>
+        <script src="js/script.js"></script>
+    </body>
+
+</html>

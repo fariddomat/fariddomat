@@ -1,0 +1,45 @@
+
+#contact {
+    
+    background-color: #fff;
+    padding: 75px 0;
+}
+#contact .col-2{
+    width: 50%;
+    float: left;
+}
+
+#contact .col-2 p{
+    padding:0 50px;
+}
+
+#contact .col-2 img{
+    width: 450px;
+    height: 400px;
+}
+
+#contact .input, textarea{
+    background-color: white;
+    width: 80%;
+    height: 40px;
+    border: 1px solid #999;
+    border-radius: 15px;
+    margin: 5px 0;
+    /* for arabic
+    direction: trl;
+    */
+    padding: 0 20px;
+    font-size: 14px;
+    font-weight: bold;
+    
+}
+
+#contact textarea{ 
+    height: auto
+}
+#contact .CTA{
+    margin-bottom: 75px;
+}
+#contact h1{
+    color:#2ecc71;
+}

@@ -1,0 +1,17 @@
+#skills{
+    
+    padding: 75px 0;
+    margin: 20px;
+    overflow: hidden;
+    font-family: 'Cairo', sans-serif;
+}
+#skills .col-2{
+    width: 50%;
+    float: left;
+    padding: 0 50px;
+}
+
+#skills .CTA{
+    clear: left;
+    float: left;
+}

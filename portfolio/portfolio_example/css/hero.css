@@ -1,0 +1,11 @@
+
+/* Main image */
+
+#hero {
+    width: 100%;
+    height: 310px;
+    background: url(../imgs/hero-image.gif) no-repeat center -60px;
+    /* full width */
+    background-size: cover;
+}
+

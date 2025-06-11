@@ -1,0 +1,35 @@
+#testimonials .container{
+    padding: 75px 50px;
+    margin: 0 auto;
+}
+#testimonials{
+    color: white;
+    font-family: 'Cairo', sans-serif;
+}
+
+
+.testi {
+  border: 2px solid #003366;
+  background-color: #1a1a29;
+  border-radius: 5px;
+  padding: 16px;
+  margin: 16px 0 50px 0;
+}
+
+.testi::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.testi img {
+  float: left;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.testi span {
+  font-size: 20px;
+  margin-right: 15px;
+}
+
