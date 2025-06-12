@@ -217,6 +217,8 @@
             color: white;
             border: none;
             padding: 0.5rem;
+            padding-left: 0.7rem;
+    padding-right: 0.7rem;
             border-radius: 50%;
             cursor: pointer;
             transition: transform 0.3s ease;
@@ -394,6 +396,9 @@
             margin-left: auto;
             margin-right: auto;
         }
+        [data-theme="light"]  .timeline-content {
+            background: #808a9a;
+        }
         .timeline-content:hover {
             transform: translateY(-5px) rotate(1deg);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
@@ -515,7 +520,7 @@
             background-image: url('img/bg11.png');
             background-attachment: fixed;
             background-position: center;
-            background-size: cover;
+            background-size: auto;
             background-blend-mode: overlay;
             background-color: rgba(31, 41, 55, 0.7);
             @apply material-card;
@@ -523,8 +528,8 @@
             overflow: hidden;
         }
         [data-theme="light"] #header {
-            background-image: url('img/bg3.png');
-            background-color: rgba(243, 244, 246, 0.7);
+            background-image: url('img/bg.png');
+            background-color: #60A5FA;
         }
         #summary {
             background-image: url('img/bg_summary.jpg');
@@ -533,11 +538,14 @@
             background-size: cover;
             background-blend-mode: overlay;
             background-color: rgba(31, 41, 55, 0.8);
+            /* background-color: #e5e5f7; */
+opacity: 0.8;
+background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 10px ), repeating-linear-gradient( #1f293755, #1f2937 );
             position: relative;
             overflow: hidden;
         }
         [data-theme="light"] #summary {
-            background-image: url('img/bg_summary_light.jpg');
+            
             background-color: rgba(249, 250, 251, 0.8);
         }
         #skills {
@@ -551,21 +559,17 @@
             overflow: hidden;
         }
         [data-theme="light"] #skills {
-            background: linear-gradient(135deg, #bfdbfe, #dbeafe);
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
             background-color: rgba(243, 244, 246, 0.7);
         }
         #experience {
-            background-image: url('img/bg_experience.jpg');
-            background-attachment: fixed;
-            background-position: center;
-            background-size: cover;
+            
             background-blend-mode: overlay;
             background-color: rgba(31, 41, 55, 0.8);
             position: relative;
             overflow: hidden;
         }
         [data-theme="light"] #experience {
-            background-image: url('img/bg_experience_light.jpg');
             background-color: rgba(249, 250, 251, 0.8);
         }
         #projects {
@@ -579,21 +583,16 @@
             overflow: hidden;
         }
         [data-theme="light"] #projects {
-            background: linear-gradient(to right, #ede9fe, #f3f4f6);
+            /* background: linear-gradient(to right, #ede9fe, #f3f4f6); */
             background-color: rgba(243, 244, 246, 0.7);
         }
         #contact {
-            background-image: url('img/bg_contact.jpg');
-            background-attachment: fixed;
-            background-position: center;
-            background-size: cover;
             background-blend-mode: overlay;
-            background-color: rgba(31, 41, 55, 0.8);
+            /* background-color: rgba(31, 41, 55, 0.8); */
             position: relative;
-            overflow: hidden;
+            /* overflow: hidden; */
         }
         [data-theme="light"] #contact {
-            background-image: url('img/bg_contact_light.jpg');
             background-color: rgba(249, 250, 251, 0.8);
         }
     </style>
