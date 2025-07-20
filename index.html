@@ -58,6 +58,168 @@
     <style>
         html { scroll-behavior: smooth; }
         body { font-family: 'Cairo', sans-serif; }
+        /* Modern gradient mesh background */
+        .gradient-mesh {
+            background: linear-gradient(45deg, #1e293b, #334155, #475569);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+        }
+        
+        [data-theme="light"] .gradient-mesh {
+            background: linear-gradient(45deg, #f1f5f9, #e2e8f0, #cbd5e1);
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Floating particles */
+        .floating-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(96, 165, 250, 0.6);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+            25% { transform: translateY(-20px) translateX(10px) rotate(90deg); }
+            50% { transform: translateY(-10px) translateX(-15px) rotate(180deg); }
+            75% { transform: translateY(15px) translateX(5px) rotate(270deg); }
+        }
+        
+        /* Glass morphism cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+        }
+        
+        [data-theme="light"] .glass-card {
+            background: rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Stats counter animation */
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6, #1d4ed8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Skill progress bars */
+        .skill-bar {
+            height: 6px;
+            background: rgba(96, 165, 250, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #60a5fa, #3b82f6);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Interactive hover effects */
+        .hover-lift:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 40px 80px rgba(96, 165, 250, 0.2);
+        }
+        
+        .hover-glow:hover {
+            box-shadow: 0 0 30px rgba(96, 165, 250, 0.3);
+        }
+        
+        /* Animated text gradient */
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa, #3b82f6, #1d4ed8, #60a5fa);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textGradient 4s ease infinite;
+        }
+        
+        @keyframes textGradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        /* Modern button */
+        .modern-btn {
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            border: none;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .modern-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .modern-btn:hover::before {
+            left: 100%;
+        }
+        
+        .modern-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(96, 165, 250, 0.4);
+        }
+        
+        /* Responsive grid */
+        .responsive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .responsive-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Animations */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px) scale(0.95); }
@@ -71,7 +233,6 @@
             transition: background-position 0.3s ease, filter 0.5s ease;
         }
         .parallax-blur { filter: blur(2px); }
-        .slider { transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
         .icon-bounce:hover {
             animation: bounce 0.5s infinite;
             transform: scale(1.2);
@@ -218,7 +379,7 @@
             border: none;
             padding: 0.5rem;
             padding-left: 0.7rem;
-    padding-right: 0.7rem;
+            padding-right: 0.7rem;
             border-radius: 50%;
             cursor: pointer;
             transition: transform 0.3s ease;
@@ -396,7 +557,7 @@
             margin-left: auto;
             margin-right: auto;
         }
-        [data-theme="light"]  .timeline-content {
+        [data-theme="light"] .timeline-content {
             background: #808a9a;
         }
         .timeline-content:hover {
@@ -517,10 +678,10 @@
         }
         /* Unique Backgrounds */
         #header {
-            background-image: url('img/bg11.png');
+            background-image: url('img/bg01.jpg');
             background-attachment: fixed;
-            background-position: center;
-            background-size: auto;
+            /* background-position: center; */
+            background-size: cover;
             background-blend-mode: overlay;
             background-color: rgba(31, 41, 55, 0.7);
             @apply material-card;
@@ -529,6 +690,8 @@
         }
         [data-theme="light"] #header {
             background-image: url('img/bg.png');
+            background-position: center;
+            background-size: auto;
             background-color: #60A5FA;
         }
         #summary {
@@ -538,14 +701,10 @@
             background-size: cover;
             background-blend-mode: overlay;
             background-color: rgba(31, 41, 55, 0.8);
-            /* background-color: #e5e5f7; */
-opacity: 0.8;
-background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 10px ), repeating-linear-gradient( #1f293755, #1f2937 );
             position: relative;
             overflow: hidden;
         }
         [data-theme="light"] #summary {
-            
             background-color: rgba(249, 250, 251, 0.8);
         }
         #skills {
@@ -563,7 +722,6 @@ background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e
             background-color: rgba(243, 244, 246, 0.7);
         }
         #experience {
-            
             background-blend-mode: overlay;
             background-color: rgba(31, 41, 55, 0.8);
             position: relative;
@@ -583,21 +741,18 @@ background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e
             overflow: hidden;
         }
         [data-theme="light"] #projects {
-            /* background: linear-gradient(to right, #ede9fe, #f3f4f6); */
             background-color: rgba(243, 244, 246, 0.7);
         }
         #contact {
             background-blend-mode: overlay;
-            /* background-color: rgba(31, 41, 55, 0.8); */
             position: relative;
-            /* overflow: hidden; */
         }
         [data-theme="light"] #contact {
             background-color: rgba(249, 250, 251, 0.8);
         }
     </style>
 </head>
-<body class="overflow-x-hidden">
+<body class="overflow-x-hidden gradient-mesh">
     <!-- Preloader -->
     <div id="preloader">
         <div class="loader-circle">
@@ -648,18 +803,154 @@ background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e
         </div>
     </header>
 
-    <!-- Professional Summary (Even, Bubbles) -->
-    <section id="summary" class="min-h-screen flex items-center px-4 relative">
-        <div class="bubble-container"></div>
-        <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-primary mb-6">Professional Summary</h2>
-            <div class="card bg-base-100 shadow-xl p-6 card-hover">
-                <p class="text-lg md:text-xl text-base-content leading-relaxed text-justify">
-                    Experienced Software Engineer with over 5 years in web development and project management, specializing in backend solutions, full-stack projects, and leading development teams. <br><br>
-                    Proficient in designing and implementing robust, scalable web applications and APIs using Laravel, React, and modern DevOps practices. <br><br>
-                    Skilled in database design, security best practices, and real-time features, with a strong emphasis on modular architectures and team leadership. <br><br>
-                    Demonstrated expertise in managing complex projects across domains like CRM, real estate, healthcare, and tourism.
+    <!-- Professional Summary Section -->
+    <section id="summary" class="min-h-screen flex items-center px-4 py-20 relative overflow-hidden">
+        <!-- Floating Particles -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="floating-particle" style="top: 10%; left: 10%; animation-delay: 0s;"></div>
+            <div class="floating-particle" style="top: 20%; right: 15%; animation-delay: 1s;"></div>
+            <div class="floating-particle" style="bottom: 30%; left: 20%; animation-delay: 2s;"></div>
+            <div class="floating-particle" style="bottom: 15%; right: 25%; animation-delay: 3s;"></div>
+            <div class="floating-particle" style="top: 50%; left: 5%; animation-delay: 4s;"></div>
+            <div class="floating-particle" style="top: 70%; right: 10%; animation-delay: 5s;"></div>
+        </div>
+        
+        <div class="container mx-auto max-w-7xl relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-5xl md:text-6xl font-bold gradient-text mb-6">
+                    Professional Summary
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-blue-600 mx-auto rounded-full"></div>
+                <p class="text-lg text-gray-300 mt-6 max-w-2xl mx-auto">
+                    Transforming ideas into digital reality with cutting-edge technology and innovative solutions
                 </p>
+            </div>
+            
+            <!-- Main Content Grid -->
+            <div class="responsive-grid">
+                <!-- Left Column - Main Summary -->
+                <div class="glass-card rounded-2xl p-8 hover-lift transition-all duration-500">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-400 to-blue-600 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-user-tie text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">About Me</h3>
+                    </div>
+                    
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        Experienced <span class="text-blue-400 font-semibold">Software Engineer</span> with over 5 years in web development and project management, specializing in backend solutions, full-stack projects, and leading development teams.
+                    </p>
+                    
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        Proficient in designing and implementing robust, scalable web applications and APIs using <span class="text-blue-400 font-semibold">Laravel, React,</span> and modern DevOps practices.
+                    </p>
+                    
+                    <p class="text-gray-300 text-lg leading-relaxed mb-8">
+                        Skilled in database design, security best practices, and real-time features, with a strong emphasis on modular architectures and team leadership.
+                    </p>
+                    
+                    <a href="FARID DOMAT.pdf" _target="blank" class="modern-btn hover-glow">
+                        <i class="fas fa-download mr-2"></i>
+                        Download CV
+                    </a>
+                </div>
+                
+                <!-- Right Column - Stats and Skills -->
+                <div class="space-y-6">
+                    <!-- Stats Cards -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="glass-card rounded-xl p-6 text-center hover-lift transition-all duration-500">
+                            <div class="stat-number" data-count="5">0</div>
+                            <p class="text-gray-300 font-medium">Years Experience</p>
+                        </div>
+                        <div class="glass-card rounded-xl p-6 text-center hover-lift transition-all duration-500">
+                            <div class="stat-number" data-count="50">0</div>
+                            <p class="text-gray-300 font-medium">Projects Completed</p>
+                        </div>
+                        <div class="glass-card rounded-xl p-6 text-center hover-lift transition-all duration-500">
+                            <div class="stat-number" data-count="15">0</div>
+                            <p class="text-gray-300 font-medium">Team Members Led</p>
+                        </div>
+                        <div class="glass-card rounded-xl p-6 text-center hover-lift transition-all duration-500">
+                            <div class="stat-number" data-count="100">0</div>
+                            <p class="text-gray-300 font-medium">Client Satisfaction</p>
+                            <span class="text-blue-400 text-sm">%</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Skills Progress -->
+                    <div class="glass-card rounded-xl p-6 hover-lift transition-all duration-500">
+                        <h3 class="text-xl font-bold text-white mb-6 flex items-center">
+                            <i class="fas fa-chart-line text-blue-400 mr-3"></i>
+                            Core Competencies
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300 font-medium">Laravel & PHP</span>
+                                    <span class="text-blue-400 font-bold">95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300 font-medium">React & Frontend</span>
+                                    <span class="text-blue-400 font-bold">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300 font-medium">Project Management</span>
+                                    <span class="text-blue-400 font-bold">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="88"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300 font-medium">DevOps & CI/CD</span>
+                                    <span class="text-blue-400 font-bold">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Specialization Tags -->
+            <div class="mt-32 mb-16 text-center">
+                <h3 class="text-2xl font-bold text-white mb-8">Specializations</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <div class="glass-card rounded-full px-6 py-3 hover-glow transition-all duration-300 cursor-pointer">
+                        <span class="text-blue-400 font-medium">Full-Stack Development</span>
+                    </div>
+                    <div class="glass-card rounded-full px-6 py-3 hover-glow transition-all duration-300 cursor-pointer">
+                        <span class="text-blue-400 font-medium">API Architecture</span>
+                    </div>
+                    <div class="glass-card rounded-full px-6 py-3 hover-glow transition-all duration-300 cursor-pointer">
+                        <span class="text-blue-400 font-medium">Team Leadership</span>
+                    </div>
+                    <div class="glass-card rounded-full px-6 py-3 hover-glow transition-all duration-300 cursor-pointer">
+                        <span class="text-blue-400 font-medium">Database Design</span>
+                    </div>
+                    <div class="glass-card rounded-full px-6 py-3 hover-glow transition-all duration-300 cursor-pointer">
+                        <span class="text-blue-400 font-medium">Security Implementation</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1048,6 +1339,125 @@ background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e
             duration: 1.2,
             stagger: 0.3,
             ease: 'power3.out'
+        });
+
+        // Summary Section Animations
+        gsap.from('.glass-card', {
+            opacity: 1,
+            y: 50,
+            duration: 1,
+            stagger: 0.2,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '#summary',
+                start: 'top 80%'
+            }
+        });
+
+        gsap.from('.gradient-text', {
+            opacity: 1,
+            y: 30,
+            duration: 1.2,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '#summary',
+                start: 'top 80%'
+            }
+        });
+
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                gsap.to(counter, {
+                    innerText: target,
+                    duration: 2,
+                    ease: 'power2.out',
+                    snap: { innerText: 1 },
+                    onUpdate: function() {
+                        counter.innerText = Math.ceil(counter.innerText);
+                    }
+                });
+            });
+        }
+
+        // Skill bar animation
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach((bar, index) => {
+                const width = bar.getAttribute('data-width');
+                gsap.to(bar, {
+                    width: width + '%',
+                    duration: 2,
+                    delay: index * 0.2,
+                    ease: 'power3.out'
+                });
+            });
+        }
+
+        // Trigger animations on scroll
+        ScrollTrigger.create({
+            trigger: '#summary',
+            start: 'top 80%',
+            onEnter: () => {
+                animateCounters();
+                animateSkillBars();
+            }
+        });
+
+        // Parallax effect for floating particles
+        gsap.to('.floating-particle', {
+            y: -50,
+            duration: 2,
+            ease: 'power1.inOut',
+            yoyo: true,
+            repeat: -1,
+            stagger: 0.2
+        });
+
+        // Interactive hover effects for glass cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, {
+                    scale: 1.02,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    scale: 1,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+        });
+
+        // Magnetic effect for buttons
+        document.querySelectorAll('.modern-btn').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+
+                gsap.to(btn, {
+                    x: x * 0.1,
+                    y: y * 0.1,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                gsap.to(btn, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.5,
+                    ease: 'power2.out'
+                });
+            });
         });
 
         // Slider

@@ -1,215 +1,456 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
 <head>
-        <meta charset="utf-8">
-        <meta name="author" content="Farid Domat">
-        <meta name="description" content="Portfolio">
-        <meta http-equiv="X-UA-Compatible" content="IE-edge">
-        <meta name="viewport" content="width-device-width, initial-scale=1">
-	<title>Portfolio</title>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-	<link rel="stylesheet" href="css/styleOther.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Summary Section</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Modern gradient mesh background */
+        .gradient-mesh {
+            background: linear-gradient(45deg, #1e293b, #334155, #475569);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+        }
+        
+        [data-theme="light"] .gradient-mesh {
+            background: linear-gradient(45deg, #f1f5f9, #e2e8f0, #cbd5e1);
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Floating particles */
+        .floating-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(96, 165, 250, 0.6);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+            25% { transform: translateY(-20px) translateX(10px) rotate(90deg); }
+            50% { transform: translateY(-10px) translateX(-15px) rotate(180deg); }
+            75% { transform: translateY(15px) translateX(5px) rotate(270deg); }
+        }
+        
+        /* Glass morphism cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+        }
+        
+        [data-theme="light"] .glass-card {
+            background: rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Stats counter animation */
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6, #1d4ed8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Skill progress bars */
+        .skill-bar {
+            height: 6px;
+            background: rgba(96, 165, 250, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #60a5fa, #3b82f6);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Interactive hover effects */
+        .hover-lift:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 40px 80px rgba(96, 165, 250, 0.2);
+        }
+        
+        .hover-glow:hover {
+            box-shadow: 0 0 30px rgba(96, 165, 250, 0.3);
+        }
+        
+        /* Animated text gradient */
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa, #3b82f6, #1d4ed8, #60a5fa);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textGradient 4s ease infinite;
+        }
+        
+        @keyframes textGradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        /* Modern button */
+        .modern-btn {
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            border: none;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .modern-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .modern-btn:hover::before {
+            left: 100%;
+        }
+        
+        .modern-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(96, 165, 250, 0.4);
+        }
+        
+        /* Responsive grid */
+        .responsive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .responsive-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-<body>
-		<!-- Section Header-->
-		<section class="header">
-            <div id="navbar" class="navbar">
-                <div class="logo"><span class="slogo">Farid Domat</span></div>
-                <a href="javascript:void(0);" class="header-icon" onclick="myFunction()">
-                    <i class="fas fa-bars menu" aria-hidden="true"></i>
-                </a>                     
+<body class="min-h-screen gradient-mesh">
+    <!-- Professional Summary Section -->
+    <section id="summary" class="min-h-screen flex items-center px-4 py-20 relative overflow-hidden">
+        <!-- Floating Particles -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="floating-particle" style="top: 10%; left: 10%; animation-delay: 0s;"></div>
+            <div class="floating-particle" style="top: 20%; right: 15%; animation-delay: 1s;"></div>
+            <div class="floating-particle" style="bottom: 30%; left: 20%; animation-delay: 2s;"></div>
+            <div class="floating-particle" style="bottom: 15%; right: 25%; animation-delay: 3s;"></div>
+            <div class="floating-particle" style="top: 50%; left: 5%; animation-delay: 4s;"></div>
+            <div class="floating-particle" style="top: 70%; right: 10%; animation-delay: 5s;"></div>
+        </div>
+        
+        <div class="container mx-auto max-w-7xl relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-5xl md:text-6xl font-bold gradient-text mb-6">
+                    Professional Summary
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-blue-600 mx-auto rounded-full"></div>
+                <p class="text-lg text-gray-300 mt-6 max-w-2xl mx-auto">
+                    Transforming ideas into digital reality with cutting-edge technology and innovative solutions
+                </p>
+            </div>
             
-                <nav class="nav-bar">
+            <!-- Main Content Grid -->
+            <div class="responsive-grid">
+                <!-- Left Column - Main Summary -->
+                <div class="glass-card rounded-2xl p-8 hover-lift transition-all duration-500">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-400 to-blue-600 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-user-tie text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">About Me</h3>
+                    </div>
                     
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Portfolio</a></li>
-                        <li><a href="#">Contact us</a></li>
-                    </ul>
-                </nav>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        Experienced <span class="text-blue-400 font-semibold">Software Engineer</span> with over 5 years in web development and project management, specializing in backend solutions, full-stack projects, and leading development teams.
+                    </p>
+                    
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        Proficient in designing and implementing robust, scalable web applications and APIs using <span class="text-blue-400 font-semibold">Laravel, React,</span> and modern DevOps practices.
+                    </p>
+                    
+                    <p class="text-gray-300 text-lg leading-relaxed mb-8">
+                        Skilled in database design, security best practices, and real-time features, with a strong emphasis on modular architectures and team leadership.
+                    </p>
+                    
+                    <button class="modern-btn hover-glow">
+                        <i class="fas fa-download mr-2"></i>
+                        Download CV
+                    </button>
+                </div>
+                
+                <!-- Right Column - Stats and Skills -->
+                <div class="space-y-6">
+                    <!-- Stats Cards -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="glass-card rounded-xl p-6 text-center hover-lift transition-all duration-500">
+                            <div class="stat-number" data-count="5">0</div>
+                            <p class="text-gray-300 font-medium">Years Experience</p>
+                        </div>
+                        <div class="glass-card rounded-xl p-6 text-center hover-lift transition-all duration-500">
+                            <div class="stat-number" data-count="50">0</div>
+                            <p class="text-gray-300 font-medium">Projects Completed</p>
+                        </div>
+                        <div class="glass-card rounded-xl p-6 text-center hover-lift transition-all duration-500">
+                            <div class="stat-number" data-count="15">0</div>
+                            <p class="text-gray-300 font-medium">Team Members Led</p>
+                        </div>
+                        <div class="glass-card rounded-xl p-6 text-center hover-lift transition-all duration-500">
+                            <div class="stat-number" data-count="100">0</div>
+                            <p class="text-gray-300 font-medium">Client Satisfaction</p>
+                            <span class="text-blue-400 text-sm">%</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Skills Progress -->
+                    <div class="glass-card rounded-xl p-6 hover-lift transition-all duration-500">
+                        <h3 class="text-xl font-bold text-white mb-6 flex items-center">
+                            <i class="fas fa-chart-line text-blue-400 mr-3"></i>
+                            Core Competencies
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300 font-medium">Laravel & PHP</span>
+                                    <span class="text-blue-400 font-bold">95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300 font-medium">React & Frontend</span>
+                                    <span class="text-blue-400 font-bold">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300 font-medium">Project Management</span>
+                                    <span class="text-blue-400 font-bold">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="88"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300 font-medium">DevOps & CI/CD</span>
+                                    <span class="text-blue-400 font-bold">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-			<div class="center">
-			<h2>What is this?</h2>
-			<h3>This is my portfolio ,,<br><br>
-                here i share my works and expereinces</h3>
-			<a href="#">explore demo<i class="fas fa-chevron-right"></i></a>
-			</div>
-			<div class="background-rgba"></div>
-		</section>
-    
-        <!-- About -->
-  
-    <section id="main">
-      <div class="container">
-        <article id="main-col">
-          <h1 class="page-title">About Me</h1>
-          <p>
-			I am Software Engineer Student (in the last year) ,<br> 
-			I have worked on many project during my study trip ,
-			<br> I like working with a team ,<br>
-			I am a quick learner and can work under pressure.
-</p>
-          <p class="dark">
-Aliquam eget pharetra diam. Nulla placerat lorem at turpis tempor, vel ultrices dui tincidunt. Proin quis egestas lorem. Mauris vehicula lectus odio, sit amet dictum justo feugiat a. Praesent id dictum lacus. Sed ullamcorper id erat ut dictum. Fusce porttitor lorem sapien, in aliquet sapien convallis et. Donec nec mauris nulla. Curabitur cursus semper odio, et hendrerit ante. Nunc at cursus ante. Maecenas gravida ligula ut efficitur suscipit. Nulla id turpis varius, pretium nunc sed, fermentum sem. Sed lacinia nunc non interdum pellentesque.
-          </p>
-        </article>
-
-        <aside id="sidebar">
-          <div class="dark">
-            <h3>What We Do</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius auctor lacus nec feugiat. Phasellus sit amet ex ipsum. Praesent pharetra tincidunt tempor. Etiam velit eros, dapibus eget porta in, lacinia et magna</p>
-          </div>
-        </aside>
-      </div>
-    </section>
-    
-    
-		<!--Services-->
-		<section class="services">
-			<h1 class="heading">What i Can do?</h1>
-			<div class="headul"></div>
-			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit enean commodo eget dolor aenean massa eget dolor aenean massa.</p>
-			<div class="feature">
-				<div class="box">
-					<div class="icon"><i class="fas fa-desktop"></i></div>
-					<div class="about">
-					<h3 class="head">web design</h3>
-					<p class="parag">We at Portfolio design and create brilliance at work in a uniquely stylish process.</p>
-					</div>
-				</div>
-                <div class="box">
-					<div class="icon"><i class="fas fa-paint-roller"></i></div>
-					<div class="about">
-					<h3 class="head">photoshop</h3>
-					<p class="parag">We at Portfolio design and create brilliance at work in a uniquely stylish process.</p>
-					</div>
-				</div>
-				<div class="box">
-					<div class="icon"><i class="fas fa-desktop"></i></div>
-					<div class="about">
-					<h3 class="head">web develop</h3>
-					<p class="parag">We at Portfolio design and create brilliance at work in a uniquely stylish process.</p>
-					</div>
-				</div>
-				
-				<div class="box">
-					<div class="icon"><i class="fas fa-camera-retro"></i></div>
-					<div class="about">
-					<h3 class="head">image processing</h3>
-					<p class="parag">We at Portfolio design and create brilliance at work in a uniquely stylish process.</p>
-					</div>
-				</div>
-				<div class="box">
-					<div class="icon"><i class="far fa-chart-bar"></i></div>
-					<div class="about">
-					<h3 class="head">developement</h3>
-					<p class="parag">We at Portfolio design and create brilliance at work in a uniquely stylish process.</p>
-					</div>
-				</div>
-				<div class="box">
-					<div class="icon"><i class="fas fa-server"></i></div>
-					<div class="about">
-					<h3 class="head">hosting</h3>
-					<p class="parag">We at Portfolio design and create brilliance at work in a uniquely stylish process.</p>
-					</div>
-				</div>
-		
-			</div>
-
-		</section>
-		<!-- Portfolio--->
-		<section class="portfolio">
-			<div class="content">
-			<div class="left-ser">
-			<h4>Portfolio</h4>
-			<div class="be-line"></div>
-			<p>Previous works</p>
-			<p>Nam quam nunc, blandit vel, luctus pulvinar, hend lorem. Maecenas nec odioet ante tincidunt tempus luctus pulvinar, hendrerit id, lorem.</p>
-			
-			</div>
-			<div class="right-ser">
-			<a href="https://fariddomat.000webhostapp.com/Demo2/index.html">
-			<div class="d-img"><img src="img/img.gif" alt=""></div>
-			</a>
-			<a href="https://fariddomat.000webhostapp.com/Demo1/index.html"><div class="d-img"><img src="img/img2.gif" alt=""></div></a>
-			<a href="https://fariddomat.000webhostapp.com/Demo3/Responsive%20login.html"><div class="d-img"><img src="img/img3.gif" alt=""></div></a>
-			<a href="https://fariddomat.000webhostapp.com/Demo4/responsive%20web%20design.html"><div class="d-img"><img src="img/img4.gif " alt=""></div></a>
-			<a href=""><div class="d-img"><img src="img/img4.gif" alt=""></div></a>
-			<a href=""><div class="d-img"><img src="img/img3.gif" alt=""></div></a>
-			<a href=""><div class="d-img"><img src="img/img2.gif" alt=""></div></a>
-			<a href=""><div class="d-img"><img src="img/img.gif" alt=""></div></a>
-			
-			</div>
-			</div>
-		</section>
-    
-    
-              <!-- Contact us -->
-    <section id="contact-us">
-        <div class="wrapper">
-        <h2>Contact us</h2>
-        <form>
-            <div class="input-field">
-                <input type="text" name="" required>
-                <label>Name</label>
+            
+            <!-- Specialization Tags -->
+            <div class="mt-16 text-center">
+                <h3 class="text-2xl font-bold text-white mb-8">Specializations</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <div class="glass-card rounded-full px-6 py-3 hover-glow transition-all duration-300 cursor-pointer">
+                        <span class="text-blue-400 font-medium">Full-Stack Development</span>
+                    </div>
+                    <div class="glass-card rounded-full px-6 py-3 hover-glow transition-all duration-300 cursor-pointer">
+                        <span class="text-blue-400 font-medium">API Architecture</span>
+                    </div>
+                    <div class="glass-card rounded-full px-6 py-3 hover-glow transition-all duration-300 cursor-pointer">
+                        <span class="text-blue-400 font-medium">Team Leadership</span>
+                    </div>
+                    <div class="glass-card rounded-full px-6 py-3 hover-glow transition-all duration-300 cursor-pointer">
+                        <span class="text-blue-400 font-medium">Database Design</span>
+                    </div>
+                    <div class="glass-card rounded-full px-6 py-3 hover-glow transition-all duration-300 cursor-pointer">
+                        <span class="text-blue-400 font-medium">Security Implementation</span>
+                    </div>
+                </div>
             </div>
-
-            <div class="input-field">
-                <input type="email" name="" required>
-                <label>Email</label>
-            </div>
-
-            <div class="input-field">
-                <input type="tel" name="" required>
-                <label>Mobile</label>
-            </div>
-
-            <div class="input-field">
-                <textarea rows="5" required></textarea>
-                <label>Your message</label>
-            </div>
-            <input type="submit" name="" value="Send Message" class="btn">
-        </form>
-
-    </div>
+        </div>
     </section>
 
-    
-
-		<!-- Footer -->
-		<footer>
-		<span>Designed by FaridDomat 2018</span>
-		<nav class="nav-social">
-		 <ul>
-		 	<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-		 	<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-		 	<li><a href="#"><i class="fab fa-instagram"></i></a></li>
-		 </ul>
-		</nav>
-		</footer>
     <script>
-        var m;
-
-        window.onscroll = () => {
-  const nav = document.querySelector('#navbar');
-  if(this.scrollY <= 10) nav.className = 'navbar'; else nav.className = 'scroll';
-};
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
         
-function myFunction() {
-    var x = document.getElementById("navbar");
-    if (x.className === "navbar") {
-        x.className += " responsive";
-    }else if (x.className === "scroll") {
-        x.className += " responsive";
-    } else {
+        // Initial animations
+        gsap.from('.glass-card', {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            stagger: 0.2,
+            ease: 'power3.out'
+        });
         
-          
-        x.className = x.className.substring(0,6);
-    }
-}
-</script>
-    
+        gsap.from('.gradient-text', {
+            opacity: 0,
+            y: 30,
+            duration: 1.2,
+            ease: 'power3.out'
+        });
+        
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                gsap.to(counter, {
+                    innerText: target,
+                    duration: 2,
+                    ease: 'power2.out',
+                    snap: { innerText: 1 },
+                    onUpdate: function() {
+                        counter.innerText = Math.ceil(counter.innerText);
+                    }
+                });
+            });
+        }
+        
+        // Skill bar animation
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach((bar, index) => {
+                const width = bar.getAttribute('data-width');
+                gsap.to(bar, {
+                    width: width + '%',
+                    duration: 2,
+                    delay: index * 0.2,
+                    ease: 'power3.out'
+                });
+            });
+        }
+        
+        // Trigger animations on scroll
+        ScrollTrigger.create({
+            trigger: '#summary',
+            start: 'top 80%',
+            onEnter: () => {
+                animateCounters();
+                animateSkillBars();
+            }
+        });
+        
+        // Parallax effect for floating particles
+        gsap.to('.floating-particle', {
+            y: -50,
+            duration: 2,
+            ease: 'power1.inOut',
+            yoyo: true,
+            repeat: -1,
+            stagger: 0.2
+        });
+        
+        // Interactive hover effects
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, {
+                    scale: 1.02,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    scale: 1,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+        });
+        
+        // Magnetic effect for buttons
+        document.querySelectorAll('.modern-btn').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                gsap.to(btn, {
+                    x: x * 0.1,
+                    y: y * 0.1,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                gsap.to(btn, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.5,
+                    ease: 'power2.out'
+                });
+            });
+        });
+        
+        // Theme toggle simulation (for demonstration)
+        let isDark = true;
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 't' || e.key === 'T') {
+                isDark = !isDark;
+                document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+            }
+        });
+    </script>
 </body>
 </html>
